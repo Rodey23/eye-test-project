@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — Online Eye Test</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .adminWrap{ padding: 26px 0 44px; }
+    .adminTop{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom: 12px; }
+    textarea{ width:100%; min-height: 220px; resize: vertical; border-radius: 14px; border:1px solid var(--border); padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .adminGrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 920px){ .adminGrid{ grid-template-columns: 1fr; } }
+    .authWrap{ padding: 26px 0 44px; display:grid; place-items:center; }
+    .authCard{ width:min(720px, 100%); }
+    .authRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .authInput{ flex:1 1 260px; border:1px solid var(--border); border-radius:14px; padding:14px 16px; font:inherit; }
+    .authHint{ margin-top: 10px; }
+    .adminLock{ display:inline-flex; align-items:center; gap:8px; }
+  </style>
+</head>
+<body>
+  <header class="siteHeader">
+    <div class="container headerInner">
+      <a href="./index.html" class="brand" aria-label="Online Eye Test home">
+        <img src="./assets/logo.svg" alt="" class="brandLogo" />
+        <span class="brandText">
+          <span class="brandName">Online Eye Test</span>
+          <span class="brandTag">Restricted admin area</span>
+        </span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a href="./index.html" class="topNavLink">Home</a>
+        <a href="./how.html" class="topNavLink">How it works</a>
+        <a href="./privacy.html" class="topNavLink">Privacy</a>
+        <a href="./accessibility.html" class="topNavLink">Accessibility</a>
+      </nav>
+
+      <a class="btn btn--ghost" href="./index.html">← Back to website</a>
+    </div>
+  </header>
+
+  <main id="adminGate" class="container authWrap">
+    <section class="card authCard">
+      <div class="adminLock pill pill--brand">
+        <span aria-hidden="true">🔒</span>
+        Admin access required
+      </div>
+      <h1 style="margin:12px 0 8px; letter-spacing:-.03em;">Enter administrator passcode</h1>
+      <p class="muted">This area is for content management only. Regular users can use the main screening flow without entering this page.</p>
+      <label class="sr-only" for="adminPasscode">Passcode</label>
+      <div class="authRow">
+        <input id="adminPasscode" class="authInput" type="password" autocomplete="current-password" placeholder="Administrator passcode" />
+        <button class="btn btn--primary" id="unlockAdmin" type="button">Unlock admin area</button>
+      </div>
+      <p class="muted tiny authHint">If you are not an administrator, return to the home page.</p>
+    </section>
+  </main>
+
+  <main class="container adminWrap hidden" id="adminShell" aria-hidden="true">
+    <div class="notice notice--danger">
+      <strong>Important:</strong> This admin page is a simple demo for US9 (content management).
+      It stores content packs in <em>your browser</em> using localStorage. It is not a secure multi-user admin system.
+      For a static demo, this gate keeps the admin screen out of the public navigation and adds a restricted access step.
+    </div>
+
+    <div class="adminTop">
+      <h1 style="margin:0; letter-spacing:-.03em;">Content packs</h1>
+      <div class="nav" style="gap:8px;">
+        <div class="pill">Current pack version: <strong id="packVersion">—</strong></div>
+        <button class="btn btn--soft" id="logoutAdmin" type="button">Lock admin area</button>
+      </div>
+    </div>
+
+    <div class="adminGrid">
+      <section class="card">
+        <h2 style="margin-top:0;">Optotype pack (JSON)</h2>
+        <p class="muted">Controls the letters used and test behaviour. Example keys: <code>version</code>, <code>letters</code>.</p>
+        <textarea id="packText" spellcheck="false"></textarea>
+        <div class="nav">
+          <button class="btn btn--primary" id="savePack" type="button">Save pack</button>
+          <button class="btn btn--soft" id="resetPack" type="button">Reset to default</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 style="margin-top:0;">Safety text (JSON)</h2>
+        <p class="muted">Optional overrides for safety content (used if you extend app.js to read it). Stored for auditability.</p>
+        <textarea id="safetyText" spellcheck="false"></textarea>
+        <div class="nav">
+          <button class="btn btn--primary" id="saveSafety" type="button">Save safety</button>
+          <button class="btn btn--soft" id="resetSafety" type="button">Clear safety overrides</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:12px;">
+      <h2 style="margin-top:0;">Notes</h2>
+      <ul class="list">
+        <li>This is intentionally <strong>local-first</strong>: no accounts, no uploads, no databases.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="./admin.js"></script>
+</body>
+</html>

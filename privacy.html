@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b5fff" />
+  <meta name="description" content="Privacy and data handling for the online eye test." />
+  <title>Privacy — Online Eye Test</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="siteHeader">
+    <div class="container headerInner">
+      <a href="./index.html" class="brand" aria-label="Online Eye Test home">
+        <img src="./assets/logo.svg" alt="" class="brandLogo" />
+        <span class="brandText">
+          <span class="brandName">Online Eye Test</span>
+          <span class="brandTag">Privacy</span>
+        </span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a href="./index.html" class="topNavLink">Home</a>
+        <a href="./how.html" class="topNavLink">How it works</a>
+        <a href="./privacy.html" class="topNavLink topNavLink--active">Privacy</a>
+        <a href="./accessibility.html" class="topNavLink">Accessibility</a>
+      </nav>
+
+      <a class="btn btn--ghost" href="./index.html">← Back to home</a>
+    </div>
+  </header>
+
+  <main class="container pageWrap" id="main">
+    <section class="hero" style="align-items:start;">
+      <div class="heroCopy">
+        <div class="heroKicker">
+          <span class="pill pill--brand">Privacy</span>
+          <span class="pill">Local-first design</span>
+        </div>
+        <h1 class="heroTitle">Privacy and data handling</h1>
+        <p class="heroSubtitle">
+          The site is designed so you can use the screening check without creating an account or entering personal details.
+        </p>
+        <div class="heroActions">
+          <a class="btn btn--primary btn--lg" href="./index.html">Back to home</a>
+          <a class="btn btn--ghost btn--lg" href="./accessibility.html">Accessibility page</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid2">
+        <article class="card">
+          <h3>What the site keeps</h3>
+          <ul class="list">
+            <li>Language choice and accessibility preferences during the session.</li>
+            <li>Screening progress and result state inside the browser session.</li>
+            <li>Anything you choose to export or print yourself.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>What the site does not require</h3>
+          <ul class="list">
+            <li>No name, email, or account is required.</li>
+            <li>No login is needed to start the check.</li>
+            <li>No personal profile is needed to view the result.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="card">
+        <h3 style="margin-top:0;">Practical privacy notes</h3>
+        <p class="muted">
+          If you close the tab, browser storage or session data may be cleared depending on your browser settings.
+          If you export a summary, that file is saved by you on your device and can be shared only if you choose to share it.
+        </p>
+        <div class="notice notice--danger compact">
+          <strong>Reminder:</strong> Privacy does not replace safety. If you have flashes, floaters, a curtain shadow,
+          severe pain, sudden loss of vision, or injury, seek urgent care.
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

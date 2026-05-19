@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b5fff" />
+  <meta name="description" content="A privacy-first online distance vision screening check. Not a diagnosis." />
+
+  <title>Online Eye Test — Distance vision screening</title>
+
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#app">Skip to content</a>
+
+    <header class="siteHeader">
+    <div class="container headerInner">
+      <a href="./index.html" class="brand" aria-label="Online Eye Test home">
+        <img src="./assets/logo.svg" alt="" class="brandLogo" />
+        <span class="brandText">
+          <span class="brandName">Online Eye Test</span>
+          <span class="brandTag">Distance vision screening</span>
+        </span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a href="./index.html" class="topNavLink topNavLink--active">Home</a>
+        <a href="./how.html" class="topNavLink">How it works</a>
+        <a href="./privacy.html" class="topNavLink">Privacy</a>
+        <a href="./accessibility.html" class="topNavLink">Accessibility</a>
+      </nav>
+
+      <div class="topControls">
+        <label class="sr-only" for="langSelect">Language</label>
+        <select id="langSelect" class="select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <button id="btnHelpTop" class="btn btn--soft" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-help"/></svg>
+          <span data-i18n="top.help">Help</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="container app" id="app">
+    <!-- progress -->
+    <section class="progressWrap hidden" id="progressWrap" aria-label="Test progress">
+      <div class="progressBar" aria-hidden="true"><div class="progressBar__fill" id="progressBar"></div></div>
+      <div class="progressMeta">
+        <span class="muted tiny"><span id="progressEyeLabel"></span></span>
+        <span class="muted tiny"><span id="progressText">0/0</span></span>
+      </div>
+    </section>
+
+    <!-- HOME -->
+    <section class="panel" data-view="home">
+      <div class="hero">
+        <div class="heroCopy">
+          <div class="heroKicker">
+            <span class="pill pill--brand">
+              <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+              Privacy‑first
+            </span>
+            <span class="pill">
+              <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+              ~3–5 minutes
+            </span> 
+            <span class="pill">
+              <svg class="icon" aria-hidden="true"><use href="#i-device"/></svg>
+              Best on laptop/tablet
+            </span>
+          </div>
+
+          <h1 class="heroTitle" data-i18n="home.title">Check your distance vision at home</h1>
+          <p class="heroSubtitle" data-i18n="home.subtitle">
+            A short screening check to notice possible changes. It does not diagnose eye disease.
+          </p>
+
+          <div class="heroActions">
+            <button class="btn btn--primary btn--lg" id="btnStart" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+              <span data-i18n="home.start">Start the check</span>
+            </button>
+            <button class="btn btn--ghost btn--lg" id="btnHow" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+              <span data-i18n="home.how">How it works</span>
+            </button>
+          </div>
+
+          <div class="trustRow">
+            <div class="trustItem">
+              <svg class="iconLg" aria-hidden="true"><use href="#i-lock"/></svg>
+              <div>
+                <div class="trustTitle">No account needed</div>
+                <div class="muted tiny">Results stay on your device unless you export.</div>
+              </div>
+            </div>
+            <div class="trustItem">
+              <svg class="iconLg" aria-hidden="true"><use href="#i-file"/></svg>
+              <div>
+                <div class="trustTitle">Clinician‑friendly summary</div>
+                <div class="muted tiny">Save/print a simple report for an appointment.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="notice notice--danger compact" role="alert">
+            <strong data-i18n="home.urgentTitle">Urgent symptoms:</strong>
+            <span data-i18n="home.urgentText">If you have flashes/floaters, a curtain shadow, severe pain, sudden loss of vision, or injury — seek urgent care.</span>
+          </div>
+        </div>
+
+        <div class="heroArt" aria-hidden="true">
+          <img src="./assets/hero-illustration.svg" alt="" />
+        </div>
+      </div>
+
+      <section class="section" id="how-section">
+        <h2 class="sectionTitle">How it works</h2>
+        <p class="sectionLead">A guided journey designed for home use — with clear limits, setup checks and help along the way.</p>
+
+        <div class="cards3">
+          <article class="infoCard">
+            <div class="infoIcon"><svg class="icon" aria-hidden="true"><use href="#i-warning"/></svg></div>
+            <h3>Safety first</h3>
+            <p>We repeat “screening, not diagnosis” and highlight red‑flag symptoms that need urgent care.</p>
+          </article>
+          <article class="infoCard">
+            <div class="infoIcon"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg></div>
+            <h3>Accessibility</h3>
+            <p>Large text, high‑contrast mode, optional audio guidance, and keyboard‑friendly controls.</p>
+          </article>
+          <article class="infoCard">
+            <div class="infoIcon"><svg class="icon" aria-hidden="true"><use href="#i-target"/></svg></div>
+            <h3>Per‑eye results</h3>
+            <p>Each eye is tested separately with confidence flags, so differences are easier to spot.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="privacy-section">
+        <div class="split">
+          <div>
+            <h2 class="sectionTitle">Privacy & trust</h2>
+            <p class="sectionLead">Built to be usable without sharing personal details.</p>
+            <ul class="bullets">
+              <li><strong>Nothing to sign up for:</strong> no name, email or account required.</li>
+              <li><strong>Local by default:</strong> progress and results stay in your browser session.</li>
+              <li><strong>Export is your choice:</strong> only you decide to save/print a summary.</li>
+            </ul>
+          </div>
+          <div class="panelCard">
+            <div class="panelCardTop">
+              <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>
+              <strong>Privacy‑first by design</strong>
+            </div>
+            <p class="muted">If you close the tab, your session may be cleared depending on browser settings.</p>
+            <button class="btn btn--soft btn--wide" id="btnAccessibility" type="button">
+              <svg class="icon" aria-hidden="true"><use href="#i-access"/></svg>
+              Accessibility options
+            </button>
+            <a class="link" href="./accessibility.html">See accessibility features</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="access-section">
+        <h2 class="sectionTitle">Accessibility features</h2>
+        <p class="sectionLead">You can change these before you start (and they’ll stay on for the session).</p>
+
+        <div class="cards3">
+          <article class="infoCard">
+            <div class="infoIcon"><svg class="icon" aria-hidden="true"><use href="#i-text"/></svg></div>
+            <h3>Large text</h3>
+            <p>Increase the base font size so safety information and controls remain readable.</p>
+          </article>
+          <article class="infoCard">
+            <div class="infoIcon"><svg class="icon" aria-hidden="true"><use href="#i-contrast"/></svg></div>
+            <h3>High contrast</h3>
+            <p>Stronger contrast for text and buttons (useful when vision is reduced or lighting is poor).</p>
+          </article>
+          <article class="infoCard">
+            <div class="infoIcon"><svg class="icon" aria-hidden="true"><use href="#i-audio"/></svg></div>
+            <h3>Optional audio</h3>
+            <p>Read key instructions aloud (consent, setup and troubleshooting). Doesn’t interrupt the test.</p>
+          </article>
+        </div>
+
+        <div class="sectionActions">
+          <button class="btn btn--primary" type="button" id="btnStart2">
+            <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+            Start the check
+          </button>
+        </div>
+      </section>
+
+      <footer class="siteFooter">
+        <div class="footerGrid">
+          <div>
+            <div class="footerBrand">
+              <img src="./assets/logo.svg" alt="" class="footerLogo" />
+              <div>
+                <div class="footerTitle">Online Eye Test</div>
+                <div class="muted tiny">Distance vision screening check</div>
+              </div>
+            </div>
+            <p class="muted tiny">
+              This tool supports awareness and triage. It does not diagnose eye disease and is not a replacement for a full eye examination.
+            </p>
+          </div>
+
+          <div>
+            <div class="footerHeading">Quick links</div>
+            <a class="footerLink" href="./how.html">How it works</a>
+            <a class="footerLink" href="./privacy.html">Privacy</a>
+            <a class="footerLink" href="./accessibility.html">Accessibility</a>
+          </div>
+
+          <div>
+            <div class="footerHeading">Safety reminder</div>
+            <p class="muted tiny">
+              If you have flashes/floaters, a curtain shadow, severe eye pain or headache, sudden loss of vision,
+              or eye injury/chemical exposure — seek urgent advice immediately.
+            </p>
+          </div>
+        </div>
+
+        <div class="footerBottom">
+          <span class="muted tiny">© <span id="year"></span> Online Eye Test (student project)</span>
+          <span class="muted tiny">Built with privacy-first, accessibility-first principles.</span>
+        </div>
+
+      </footer>
+    </section>
+
+    <!-- CONSENT (US1) -->
+    <section class="panel hidden" data-view="consent">
+      <div class="panelHeader">
+        <h2 data-i18n="consent.title">Before you start</h2>
+        <p class="muted" data-i18n="consent.subtitle">This is a screening check — not a diagnosis.</p>
+      </div>
+
+      <div class="notice notice--danger" role="alert">
+        <div class="noticeTitle">
+          <svg class="icon" aria-hidden="true"><use href="#i-warning"/></svg>
+          <span data-i18n="consent.redTitle">Stop and seek urgent advice if you have red‑flag symptoms</span>
+        </div>
+        <ul class="list">
+          <li data-i18n="consent.r1">Sudden flashes of light or new floaters</li>
+          <li data-i18n="consent.r2">A curtain/shadow across your vision</li>
+          <li data-i18n="consent.r3">Severe eye pain or headache</li>
+          <li data-i18n="consent.r4">Sudden loss of vision</li>
+          <li data-i18n="consent.r5">Eye injury or chemical exposure</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="consent.confirm">Confirm to continue</h3>
+        <label class="check"><input id="c1" type="checkbox" /> <span data-i18n="consent.c1">I understand this is a screening check, not a diagnosis</span></label>
+        <label class="check"><input id="c2" type="checkbox" /> <span data-i18n="consent.c2">I understand my home setup affects reliability</span></label>
+        <label class="check"><input id="c3" type="checkbox" /> <span data-i18n="consent.c3">I understand urgent symptoms need urgent advice regardless</span></label>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backHome1" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="consentContinue" type="button" disabled data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITY (US7) -->
+    <section class="panel hidden" data-view="access">
+      <div class="panelHeader">
+        <h2 data-i18n="access.title">Accessibility options</h2>
+        <p class="muted">Adjust text, contrast and interaction before you begin.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3 data-i18n="access.textSize">Text size</h3>
+          <label class="choice"><input type="radio" name="textSize" value="standard" checked /> <span data-i18n="access.standard">Standard</span></label>
+          <label class="choice"><input type="radio" name="textSize" value="large" /> <span data-i18n="access.large">Large</span></label>
+
+          <hr class="sep"/>
+
+          <h3 data-i18n="access.contrast">Contrast</h3>
+          <label class="choice"><input type="radio" name="contrast" value="standard" checked /> <span data-i18n="access.standard">Standard</span></label>
+          <label class="choice"><input type="radio" name="contrast" value="high" /> <span data-i18n="access.high">High contrast</span></label>
+
+          <hr class="sep"/>
+
+          <h3>Motion</h3>
+          <label class="check"><input id="reducedMotion" type="checkbox" /> Reduce motion</label>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="access.audio">Audio guidance</h3>
+          <label class="check"><input id="audioRead" type="checkbox" /> <span data-i18n="access.audioRead">Read instructions aloud</span></label>
+          <label class="check"><input id="audioSafety" type="checkbox" /> <span data-i18n="access.audioSafety">Repeat safety reminders on help screen</span></label>
+
+          <hr class="sep"/>
+
+          <h3 data-i18n="access.answer">Answer method</h3>
+          <label class="choice"><input type="radio" name="answerMethod" value="type" checked /> <span data-i18n="access.type">Type letter</span></label>
+          <label class="choice"><input type="radio" name="answerMethod" value="tap" /> <span data-i18n="access.tap">Tap large buttons</span></label>
+
+          <div class="notice notice--info compact">
+            <strong>Keyboard tips:</strong> In the test, press <kbd>H</kbd> for help, <kbd>Esc</kbd> to pause, and number keys (1–8) for tap answers.
+          </div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backConsent" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="accessContinue" type="button" data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- SETUP (US2) -->
+    <section class="panel hidden" data-view="setup">
+      <div class="panelHeader">
+        <h2 data-i18n="setup.title">Get comfortable (1 minute)</h2>
+        <p class="muted" data-i18n="setup.subtitle">This makes your result more reliable.</p>
+      </div>
+
+      <div class="card">
+        <div class="checks2">
+          <label class="check"><input class="setupCheck" type="checkbox" data-key="lightingStable" /> <span data-i18n="setup.l1">Indoor lighting is stable</span></label>
+          <label class="check"><input class="setupCheck" type="checkbox" data-key="noGlare" /> <span data-i18n="setup.l2">No glare/reflections on screen</span></label>
+          <label class="check"><input class="setupCheck" type="checkbox" data-key="brightnessOk" /> <span data-i18n="setup.l3">Brightness feels comfortable</span></label>
+          <label class="check"><input class="setupCheck" type="checkbox" data-key="steadySeating" /> <span data-i18n="setup.l4">Sitting position is steady</span></label>
+        </div>
+
+        <div class="notice notice--info">
+          <strong data-i18n="setup.tipTitle">Tip:</strong>
+          <span data-i18n="setup.tipText">If you struggle, don’t lean closer — reduce glare or improve lighting instead.</span>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backAccess" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="setupContinue" type="button" data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- CORRECTION + EYE COVERING (US2) -->
+    <section class="panel hidden" data-view="correction">
+      <div class="panelHeader">
+        <h2 data-i18n="correction.title">Glasses or contacts?</h2>
+        <p class="muted" data-i18n="correction.subtitle">Your result depends on whether you’re wearing your distance correction.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <label class="choice"><input type="radio" name="correction" value="wearing_glasses" /> <span data-i18n="correction.o1">Wearing distance glasses now</span></label>
+          <label class="choice"><input type="radio" name="correction" value="have_glasses_not_wearing" /> <span data-i18n="correction.o2">Have glasses but not wearing today</span></label>
+          <label class="choice"><input type="radio" name="correction" value="none" checked /> <span data-i18n="correction.o3">No glasses or contact lenses</span></label>
+          <label class="choice"><input type="radio" name="correction" value="not_sure" /> <span data-i18n="correction.o4">Not sure</span></label>
+
+          <div class="notice notice--info compact">
+            If you normally use distance correction, wearing it should match your usual day‑to‑day vision.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="cover.title">Cover one eye safely</h3>
+          <ul class="list">
+            <li data-i18n="cover.l1">Use your palm or a clean card/tissue</li>
+            <li data-i18n="cover.l2">Do not press on your eyelid</li>
+            <li data-i18n="cover.l3">Keep both eyes open behind the cover</li>
+            <li data-i18n="cover.l4">Make sure the uncovered eye feels clear</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backSetup" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="correctionContinue" type="button" data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- CALIBRATION (UC3 / NFR7) -->
+    <section class="panel hidden" data-view="calibration">
+      <div class="panelHeader">
+        <h2 data-i18n="cal.title">Calibration (recommended)</h2>
+        <p class="muted" data-i18n="cal.subtitle">Match the box to a bank card/ID held against your screen.</p>
+      </div>
+
+      <div class="card">
+        <div class="calWrap">
+          <div class="calStage" aria-label="Calibration preview">
+            <div id="calRect" class="calRect">
+              <span class="muted" data-i18n="cal.box">Match this box to your card</span>
+            </div>
+          </div>
+
+          <div class="calControls">
+            <button class="btn btn--soft" id="calDec" type="button" data-i18n="cal.dec">− Smaller</button>
+            <button class="btn btn--soft" id="calInc" type="button" data-i18n="cal.inc">+ Larger</button>
+            <button class="btn btn--ghost" id="calReset" type="button" data-i18n="cal.reset">Reset</button>
+          </div>
+
+          <label class="check">
+            <input id="skipCal" type="checkbox" />
+            <span data-i18n="cal.skip">Skip calibration (confidence will be lower)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backCorrection" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="calContinue" type="button" data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- POSITION CONFIRMATION (US2) -->
+    <section class="panel hidden" data-view="position">
+      <div class="panelHeader">
+        <h2 data-i18n="pos.title">Confirm your position</h2>
+        <p class="muted" data-i18n="pos.subtitle">Try to keep the same distance the whole time.</p>
+      </div>
+
+      <div class="card">
+        <label class="check"><input class="posCheck" type="checkbox" data-key="atDistance" /> <span data-i18n="pos.c1">I am at the measured distance now</span></label>
+        <label class="check"><input class="posCheck" type="checkbox" data-key="lettersReadable" /> <span data-i18n="pos.c2">Lighting is stable and readable</span></label>
+        <label class="check"><input class="posCheck" type="checkbox" data-key="wontMoveCloser" /> <span data-i18n="pos.c3">I will not move closer during the check</span></label>
+
+        <div class="notice notice--info">
+          <strong data-i18n="pos.remTitle">Reminder:</strong>
+          <span data-i18n="pos.remText">Moving closer can make the result look better than it really is.</span>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backCal" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="posContinue" type="button" data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- PRACTICE (US3) -->
+    <section class="panel hidden" data-view="practice">
+      <div class="panelHeader">
+        <h2 data-i18n="prac.title">Quick practice</h2>
+        <p class="muted" data-i18n="prac.subtitle">One sample item, so you know what to do.</p>
+      </div>
+
+      <div class="testCard">
+        <div class="optotype" id="practiceLetter" aria-label="Practice letter">E</div>
+
+        <div id="practiceTypeRow" class="answerRow">
+          <input id="practiceInput" class="input" maxlength="1" autocomplete="off" inputmode="text" data-i18n-ph="prac.placeholder" placeholder="Type the letter" />
+          <button class="btn btn--primary" id="practiceSubmit" type="button" data-i18n="ui.submit">Submit</button>
+        </div>
+
+        <div id="practiceTapRow" class="answerRow hidden">
+          <div class="tapGrid" id="practiceTapGrid" aria-label="Tap answers"></div>
+        </div>
+
+        <button class="btn btn--ghost btn--wide" id="practiceCantSee" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>
+          <span data-i18n="ui.cantSee">I can’t see clearly</span>
+        </button>
+
+        <div id="practiceFeedback" class="notice notice--info hidden"></div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backPos" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="pracContinue" type="button" disabled data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- EYE ORDER (US4) -->
+    <section class="panel hidden" data-view="eyeOrder">
+      <div class="panelHeader">
+        <h2 data-i18n="eye.title">Which eye first?</h2>
+        <p class="muted" data-i18n="eye.subtitle">You will test each eye separately.</p>
+      </div>
+
+      <div class="card">
+        <label class="choice">
+          <input type="radio" name="eyeOrder" value="right_first" checked />
+          <span><strong data-i18n="eye.r">Right eye first</strong> — <span class="muted" data-i18n="eye.rhint">cover left eye</span></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="eyeOrder" value="left_first" />
+          <span><strong data-i18n="eye.l">Left eye first</strong> — <span class="muted" data-i18n="eye.lhint">cover right eye</span></span>
+        </label>
+
+        <div class="notice notice--info compact">
+          <span data-i18n="eye.tip">Tip: cover gently and keep both eyes open.</span>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backPractice" type="button" data-i18n="ui.back">Back</button>
+        <button class="btn btn--primary" id="startTest" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+          <span data-i18n="eye.start">Start</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TEST (US4, NFR4) -->
+    <section class="panel hidden" data-view="test">
+      <div class="testHeader">
+        <div>
+          <h2 id="testTitle">Eye test</h2>
+          <div class="muted tiny" id="testHint"></div>
+        </div>
+
+        <button class="btn btn--soft" id="pauseHelp" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg>
+          <span data-i18n="ui.pauseHelp">Pause & help</span>
+        </button>
+      </div>
+
+      <div class="testCard">
+        <div class="optotype" id="testLetter" aria-label="Test letter">P</div>
+
+        <div id="testTypeRow" class="answerRow">
+          <input id="testInput" class="input" maxlength="1" autocomplete="off" inputmode="text" data-i18n-ph="test.placeholder" placeholder="Type the letter" />
+          <button class="btn btn--primary" id="testSubmit" type="button" data-i18n="ui.submit">Submit</button>
+        </div>
+
+        <div id="testTapRow" class="answerRow hidden">
+          <div class="tapGrid" id="testTapGrid" aria-label="Tap answers"></div>
+        </div>
+
+        <div class="testFooter">
+          <button class="btn btn--ghost btn--wide" id="cantSee" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>
+            <span data-i18n="ui.cantSee">I can’t see clearly</span>
+          </button>
+
+          <div class="muted tiny" id="itemsLeft"></div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="exitToHome" type="button" data-i18n="ui.exit">Exit</button>
+        <button class="btn btn--primary" id="nextAfterEye" type="button" disabled data-i18n="ui.continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- HELP -->
+    <section class="panel hidden" data-view="help">
+      <div class="panelHeader">
+        <h2 data-i18n="help.title">Help (quick fixes)</h2>
+        <p class="muted">You can return to where you were after checking tips.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3 data-i18n="help.common">Common issues</h3>
+          <ul class="list">
+            <li data-i18n="help.i1">Moving closer to the screen</li>
+            <li data-i18n="help.i2">Glare/reflections</li>
+            <li data-i18n="help.i3">Wrong eye covered</li>
+            <li data-i18n="help.i4">Low lighting</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="help.actions">Try this</h3>
+          <button class="btn btn--soft btn--wide" id="fixDistance" type="button" data-i18n="help.b1">Recheck distance</button>
+          <button class="btn btn--soft btn--wide" id="fixGlare" type="button" data-i18n="help.b2">Reduce glare</button>
+          <button class="btn btn--soft btn--wide" id="fixCover" type="button" data-i18n="help.b3">Eye covering steps</button>
+
+          <div class="notice notice--info compact">
+            <strong>Shortcuts:</strong> Press <kbd>Esc</kbd> to open Help during the test.
+          </div>
+        </div>
+      </div>
+
+      <div class="notice notice--danger" role="alert">
+        <strong data-i18n="help.urgentTitle">Urgent reminder:</strong>
+        <span data-i18n="help.urgentText">If you have flashes/floaters, a curtain shadow, severe pain, sudden loss of vision, or injury — seek urgent care.</span>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--primary" id="resume" type="button" data-i18n="help.resume">Resume</button>
+        <button class="btn btn--soft" id="restartEye" type="button" data-i18n="help.restart">Restart this eye</button>
+        <button class="btn btn--ghost" id="exitHelp" type="button" data-i18n="ui.exit">Exit</button>
+      </div>
+    </section>
+
+    <!-- RESULTS (US5, US1, NFR6, NFR7) -->
+    <section class="panel hidden" data-view="results">
+      <div class="panelHeader">
+        <h2 data-i18n="res.title">Your results</h2>
+        <p class="muted">A clear summary with confidence flags and next steps.</p>
+      </div>
+
+      <div class="resultGrid">
+        <div class="resultCard">
+          <div class="muted" data-i18n="res.left">Left eye</div>
+          <div class="score" id="resLeft">—</div>
+          <div class="pill"><span data-i18n="res.conf">Confidence</span>: <strong id="confLeft">—</strong></div>
+        </div>
+        <div class="resultCard">
+          <div class="muted" data-i18n="res.right">Right eye</div>
+          <div class="score" id="resRight">—</div>
+          <div class="pill"><span data-i18n="res.conf">Confidence</span>: <strong id="confRight">—</strong></div>
+        </div>
+      </div>
+
+      <div class="notice notice--info">
+        <strong data-i18n="res.meaningTitle">What this means</strong>
+        <span data-i18n="res.meaningText">This is a screening check, not a diagnosis. Results can vary with distance, glare and lighting.</span>
+      </div>
+
+      <div class="card">
+        <h3 data-i18n="res.nextTitle">Next steps</h3>
+        <ul class="list">
+          <li data-i18n="res.n1"><strong>Reduced vision:</strong> book an optometrist appointment.</li>
+          <li data-i18n="res.n2"><strong>Urgent symptoms:</strong> seek urgent advice regardless of these results.</li>
+          <li data-i18n="res.n3"><strong>Routine care:</strong> consider a full eye exam every 1–2 years.</li>
+        </ul>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--primary" id="goExport" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>
+          <span data-i18n="res.export">Save / print summary</span>
+        </button>
+        <button class="btn btn--soft" id="retake" type="button" data-i18n="res.retake">Retake</button>
+        <button class="btn btn--ghost" id="backHome2" type="button" data-i18n="ui.home">Home</button>
+      </div>
+    </section>
+
+    <!-- EXPORT (US6, NFR8) -->
+    <section class="panel hidden" data-view="export">
+      <div class="panelHeader">
+        <h2 data-i18n="exp.title">Export summary</h2>
+        <p class="muted" data-i18n="exp.subtitle">Designed to be easy to share with an optometrist.</p>
+      </div>
+
+      <div class="card">
+        <ul class="list">
+          <li data-i18n="exp.i1">Date/time of test</li>
+          <li data-i18n="exp.i2">Device type</li>
+          <li data-i18n="exp.i3">Glasses/contacts context</li>
+          <li data-i18n="exp.i4">Calibration status</li>
+          <li data-i18n="exp.i5">Per-eye scores</li>
+          <li data-i18n="exp.i6">Confidence flags</li>
+          <li data-i18n="exp.i7">Limitations + next steps</li>
+        </ul>
+
+        <div class="notice notice--info compact">
+          <strong data-i18n="exp.privacyTitle">Privacy:</strong>
+          <span data-i18n="exp.privacyText">No personal details are included unless you add notes yourself.</span>
+        </div>
+
+        <div class="ctaRow">
+          <button class="btn btn--primary" id="btnPrint" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            <span data-i18n="exp.pdf">Download / Save as PDF</span>
+          </button>
+          <button class="btn btn--soft" id="btnPrintView" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-print"/></svg>
+            <span data-i18n="exp.print">Print</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backResults" type="button" data-i18n="ui.back">Back</button>
+      </div>
+
+      <!-- print area -->
+      <section id="printArea" class="printArea" aria-hidden="true">
+        <h1>Online Eye Test — Screening Summary</h1>
+        <p><strong>Generated:</strong> <span id="pDate"></span></p>
+
+        <h2>Results</h2>
+        <table class="printTable">
+          <thead><tr><th>Eye</th><th>Score</th><th>Confidence</th></tr></thead>
+          <tbody>
+            <tr><td>Left</td><td id="pLeft"></td><td id="pConfLeft"></td></tr>
+            <tr><td>Right</td><td id="pRight"></td><td id="pConfRight"></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Context</h2>
+        <ul>
+          <li><strong>Correction:</strong> <span id="pCorr"></span></li>
+          <li><strong>Calibration:</strong> <span id="pCal"></span></li>
+          <li><strong>Environment:</strong> <span id="pEnv"></span></li>
+          <li><strong>Position:</strong> <span id="pPos"></span></li>
+          <li><strong>Device:</strong> <span id="pDev"></span></li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <p>
+          This is a screening check, not a diagnosis. Results can vary with distance, glare, lighting and user setup.
+          Visual acuity alone cannot detect all eye disease. Seek urgent care for red‑flag symptoms.
+        </p>
+
+        <h2>Recommended next steps</h2>
+        <ul>
+          <li>If results suggest reduced vision, book an optometrist appointment.</li>
+          <li>If you have flashes/floaters, curtain shadow, severe pain, sudden loss of vision, or injury — seek urgent care.</li>
+          <li>Consider a full eye exam every 1–2 years.</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- HOW IT WORKS (in-app view) -->
+    <section class="panel hidden" data-view="how">
+      <div class="panelHeader">
+        <h2 data-i18n="how.title">How it works</h2>
+      </div>
+
+      <div class="card">
+        <ol class="steps">
+          <li><strong data-i18n="how.s1t">Safety + consent</strong><br><span class="muted" data-i18n="how.s1d">You confirm limits and red-flag guidance.</span></li>
+          <li><strong data-i18n="how.s2t">Accessibility</strong><br><span class="muted" data-i18n="how.s2d">Text size, contrast, audio, controls.</span></li>
+          <li><strong data-i18n="how.s3t">Guided setup</strong><br><span class="muted" data-i18n="how.s3d">Lighting, glare, steady seating.</span></li>
+          <li><strong data-i18n="how.s4t">Calibration</strong><br><span class="muted" data-i18n="how.s4d">Optional sizing to improve confidence.</span></li>
+          <li><strong data-i18n="how.s5t">Practice</strong><br><span class="muted" data-i18n="how.s5d">One sample item before scoring.</span></li>
+          <li><strong data-i18n="how.s6t">Per-eye test</strong><br><span class="muted" data-i18n="how.s6d">Each eye is tested separately.</span></li>
+          <li><strong data-i18n="how.s7t">Results + export</strong><br><span class="muted" data-i18n="how.s7d">Clear next steps and printable summary.</span></li>
+        </ol>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn--ghost" id="backHome3" type="button" data-i18n="ui.home">Home</button>
+        <button class="btn btn--primary" id="howStart" type="button" data-i18n="home.start">Start the check</button>
+      </div>
+    </section>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  </main>
+
+  <!-- icon sprite -->
+  <svg class="sr-only" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-help" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Zm0 16a1.25 1.25 0 1 1 0-2.5A1.25 1.25 0 0 1 12 18Zm1.6-6.6c-.6.4-.85.75-.85 1.6v.3h-1.9v-.45c0-1.35.55-2.1 1.5-2.75c.7-.5 1.05-.8 1.05-1.45c0-.8-.65-1.3-1.55-1.3c-.9 0-1.6.45-1.85 1.4l-1.75-.7c.45-1.6 1.95-2.6 3.65-2.6c2.1 0 3.45 1.2 3.45 2.95c0 1.35-.7 2.1-1.75 2.8Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5 5.5v13l11-6.5-11-6.5Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 6h3v12H7V6Zm7 0h3v12h-3V6Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"/></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V9h2v4Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Zm-7-2a2 2 0 1 1 4 0v2h-4V7Z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path fill="currentColor" d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1.5V8h4.5L14 3.5Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L12 13.2V3h0ZM5 19h14v2H5v-2Z"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path fill="currentColor" d="M6 9V2h12v7H6Zm10-5H8v3h8V4Zm3 6a3 3 0 0 1 3 3v5h-4v4H6v-4H2v-5a3 3 0 0 1 3-3h14Zm-5 11v-5H8v5h8Zm5-7v-2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v2h16Z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5c-5.2 0-9.2 4.1-10.5 6.5C2.8 13.9 6.8 18 12 18s9.2-4.1 10.5-6.5C21.2 9.1 17.2 5 12 5Zm0 11a4.5 4.5 0 1 1 0-9a4.5 4.5 0 0 1 0 9Zm0-2.5a2 2 0 1 0 0-4a2 2 0 0 0 0 4Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 20 5v6c0 5-3.4 9.4-8 11c-4.6-1.6-8-6-8-11V5l8-3Zm0 4.2L6 8v3c0 3.6 2.3 6.9 6 8.5c3.7-1.6 6-4.9 6-8.5V8l-6-1.8Z"/></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-4l2 2v1H9v-1l2-2H7a3 3 0 0 1-3-3V6Zm3-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H7Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20Zm1 10.4 3.4 2-.9 1.6L11 13V6h2v6.4Z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path fill="currentColor" d="M4 7h7v2H4V7Zm9 0h7v2h-7V7ZM4 15h11v2H4v-2Zm13 0h3v2h-3v-2ZM9 5h2v6H9V5Zm6 13h2V9h-2v9Z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10h-2A8 8 0 1 1 12 4V2Zm8 10a8 8 0 0 0-8-8v2a6 6 0 1 1-6 6H4a8 8 0 0 0 16 0Zm-8-3 7-7 1.4 1.4-7 7V9h-1.4Z"/></symbol>
+    <symbol id="i-access" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6Zm9 7H3v2h7l-1.5 7H6v2h3.2l.8-4h4l.8 4H18v-2h-2.5L14 11h7V9Z"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path fill="currentColor" d="M4 5V3h16v2h-7v16h-2V5H4Z"/></symbol>
+    <symbol id="i-contrast" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0 0 20V2Zm0 2.2v15.6a8 8 0 0 1 0-15.6Z"/></symbol>
+    <symbol id="i-audio" viewBox="0 0 24 24"><path fill="currentColor" d="M4 10v4h4l5 4V6L8 10H4Zm13.5 2a3.5 3.5 0 0 0-2-3.2v6.4a3.5 3.5 0 0 0 2-3.2Zm0-8a1 1 0 0 1 .7.3a10.5 10.5 0 0 1 0 15.4a1 1 0 1 1-1.4-1.4a8.5 8.5 0 0 0 0-12.6A1 1 0 0 1 17.5 4Z"/></symbol>
+  </svg>
+
+  <script src="./app.js"></script>
+</body>
+</html>

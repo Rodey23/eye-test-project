@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b5fff" />
+  <meta name="description" content="Accessibility options for the online eye test." />
+  <title>Accessibility — Online Eye Test</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="siteHeader">
+    <div class="container headerInner">
+      <a href="./index.html" class="brand" aria-label="Online Eye Test home">
+        <img src="./assets/logo.svg" alt="" class="brandLogo" />
+        <span class="brandText">
+          <span class="brandName">Online Eye Test</span>
+          <span class="brandTag">Accessibility</span>
+        </span>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a href="./index.html" class="topNavLink">Home</a>
+        <a href="./how.html" class="topNavLink">How it works</a>
+        <a href="./privacy.html" class="topNavLink">Privacy</a>
+        <a href="./accessibility.html" class="topNavLink topNavLink--active">Accessibility</a>
+      </nav>
+
+      <a class="btn btn--ghost" href="./index.html">← Back to home</a>
+    </div>
+  </header>
+
+  <main class="container pageWrap" id="main">
+    <section class="hero" style="align-items:start;">
+      <div class="heroCopy">
+        <div class="heroKicker">
+          <span class="pill pill--brand">Accessibility</span>
+          <span class="pill">Keyboard friendly</span>
+        </div>
+        <h1 class="heroTitle">Accessibility options</h1>
+        <p class="heroSubtitle">
+          You can adjust the experience before starting the check so the text, controls, and audio guidance suit you better.
+        </p>
+        <div class="heroActions">
+          <a class="btn btn--primary btn--lg" href="./index.html">Back to home</a>
+          <a class="btn btn--ghost btn--lg" href="./how.html">How it works</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cards3">
+        <article class="infoCard">
+          <h3>Text size</h3>
+          <p>Increase the base text size so instructions and buttons stay readable.</p>
+        </article>
+        <article class="infoCard">
+          <h3>Contrast</h3>
+          <p>Use a higher contrast mode to make text and controls easier to see.</p>
+        </article>
+        <article class="infoCard">
+          <h3>Audio guidance</h3>
+          <p>Enable spoken instructions for consent, setup, and help steps.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="grid2">
+        <article class="card">
+          <h3>Answer methods</h3>
+          <ul class="list">
+            <li>Type the letter with your keyboard.</li>
+            <li>Use the large on-screen tap buttons.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Keyboard tips</h3>
+          <ul class="list">
+            <li>H opens help during the test.</li>
+            <li>Esc pauses the test.</li>
+            <li>Number keys can be used for tap answers.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="notice notice--info">
+        <strong>Tip:</strong> The most reliable result comes from stable lighting, reduced glare, and staying at the same distance from the screen.
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
